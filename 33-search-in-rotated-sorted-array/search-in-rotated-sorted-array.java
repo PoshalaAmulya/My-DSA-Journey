@@ -1,35 +1,39 @@
 class Solution {
-    public int b(int[] nums,int t,int s,int e){
+    public int search(int[] arr, int k) {
         int i,j,mid;
-        i=s;j=e;
+        int n=arr.length;
+        i=0;j=n-1;
+        if(n==1){
+            if(arr[0]==k) return 0;
+            return -1;
+        }
         while(i<=j){
             mid=(i+j)/2;
-            if(nums[mid]==t){
+            if(arr[mid]==k){
                 return mid;
             }
-            else if(nums[mid]<t){
-                i=mid+1;
+            //left side sorted
+            else if(arr[mid]>=arr[i]){
+                //the target lies in the sorted range
+                if(k>=arr[i] && k<=arr[mid]){
+                    j=mid-1;
+                }
+                else{
+                    i=mid+1;
+                }
             }
+            //right side is sorted
             else{
-                j=mid-1;
+                //the target lies in the right sorted part
+                if(k>=arr[mid] && k<=arr[j]){
+                    i=mid+1;
+                }
+                else{
+                    j=mid-1;
+                }
             }
         }
         return -1;
     }
-    public int search(int[] nums, int target) {
-        int pivot=nums.length-1;
-        for(int i=0;i<nums.length-1;i++){
-            if(nums[i]>nums[i+1]){
-                pivot=i;
-            }
-        }
-        int a1=-1,a2=-1;
-        a1=b(nums,target,0,pivot);
-        a2=b(nums,target,pivot+1,nums.length-1);
-        if(a1!=-1) return a1;
-        else if(a2!=-1) return a2;
-        return -1;
-
-        
-    }
+    
 }
