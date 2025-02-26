@@ -1,7 +1,8 @@
 class Solution {
     public String removeOuterParentheses(String s) {
         int i,o=0,c=0;
-        String ans="";
+        // String ans="";
+        StringBuilder ans= new StringBuilder();
         for(i=0;i<s.length();i++){
             if(o==0){
                 o++;
@@ -18,8 +19,8 @@ class Solution {
                 c=0;
                 continue;
             }
-            ans+=s.charAt(i);
+            ans.append(s.charAt(i));
         }
-        return ans;
+        return ans.toString();
     }
 }
