@@ -1,22 +1,23 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans= new ArrayList<>();
         int i,j;
-        List<List<Integer>>res= new ArrayList<List<Integer>>();
-        int ans[][]= new int[numRows][numRows];
+        
         for(i=0;i<numRows;i++){
-            ans[i][0]=1;
-        }
-        for(i=0;i<numRows;i++){
-            List<Integer> li=new ArrayList<>();
+            List<Integer> li= new ArrayList<>();
             li.add(1);
-            for(j=0;j<=i;j++){
-                if(i-1>=0 && j-1>=0){
-                    ans[i][j]=ans[i-1][j-1]+ans[i-1][j];
-                    li.add(ans[i][j]);
-                }
+            if(i==0){
+                ans.add(li);
+                continue;
+            } 
+            for(j=1;j<i;j++){
+                int ele1=ans.get(i-1).get(j-1);
+                int ele2= ans.get(i-1).get(j);
+                li.add(ele1+ele2);
             }
-            res.add(li);
+            li.add(1);
+            ans.add(li);
         }
-        return res;
+        return ans;
     }
 }
