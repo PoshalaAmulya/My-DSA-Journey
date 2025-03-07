@@ -1,6 +1,7 @@
 class Solution {
-    int prime[]= new int[(int)(1e6)+1];
-    public void seive(){
+    int prime[];
+    Solution(){
+        prime=new int[(int)(1e6)+1];
         Arrays.fill(prime,1);
         prime[0]=0;
         prime[1]=0;
@@ -12,12 +13,15 @@ class Solution {
                 }
             }
         }
-        return ;
     }
+    // public void seive(){
+    //     Arrays.fill(prime,1);
+    //     return ;
+    // }
     public int[] closestPrimes(int left, int right) {
         int[] ans= new int[2];
         int k=0;
-        seive();
+        // seive();
         int ele1=-1,ele2=-1;
         int next=-1;
         ans[0]=-1;
