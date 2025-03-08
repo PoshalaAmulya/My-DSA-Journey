@@ -29,35 +29,26 @@ class GFG
 
 class Solution
 {
-    int[] p= new int[1000000];
-    Solution(){
-        
-    }
-    public int[] AllPrimeFactors(int N)
+    public int[] AllPrimeFactors(int n)
     {
-        //seive
+        int i;
         ArrayList<Integer> al= new ArrayList<>();
-        Arrays.fill(p,1);
-        p[0]=0;
-        p[1]=0;
-        
-        for(int i=0;i*i<=N;i++){
-            if(p[i]==1){
-                for(int j=i+i;j<=N;j=j+i){
-                    if(p[j]==1){
-                        p[j]=0;
-                    }
+        for(i=2;i*i<=n;i++){
+            if(n%i==0){
+                al.add(i);
+                while(n%i==0){
+                    n=(n/i);
                 }
             }
         }
-        for(int i=2;i<=N;i++){
-            if(N%i==0 && p[i]==1)
-            al.add(i);
+        if(n!=1){
+            al.add(n);
         }
         int ans[]= new int[al.size()];
         int k=0;
-        for(int x: al)
-        ans[k++]=x;
+        for(int x: al){
+            ans[k++]=x;
+        }
         return ans;
         // code here
     }
