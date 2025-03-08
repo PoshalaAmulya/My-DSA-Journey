@@ -1,30 +1,29 @@
 class Solution {
     public double myPow(double x, int n) {
-        int i;
-        double ans=1;
         if(n==0) return 1;
+        if(n==1) return x;
+        if(x==0) return 0;
         if(x==1) return 1;
         if(x==-1){
-            if(n%2==0){
-                return 1;
-            }
+            if(n%2==0) return 1;
             return -1;
         }
-        if(x==2 && n>0) return (1L<<n);
-        if(n==Integer.MIN_VALUE)return 0;
-        if(n>0){
-            for(i=0;i<n;i++){
+        int N= Math.abs(n);
+        if(N<0) return 0;
+        double ans=1;
+        while(N>1){
+            if(N%2==0){
+                x=(x*x);
+                N=(N/2);
+            }
+            else{
                 ans=(ans*x);
+                N=N-1;
             }
+            // System.out.println(ans);
         }
-        else{
-            // System.out.println(ans+" "+Math.abs(n));
-            
-            for(i=0;i<Math.abs(n);i++){
-                // System.out.println(ans);
-                ans=(ans/x);
-            }
-        }
+        ans=ans*x;
+        if(n<0) return 1/ans;
         return ans;
         
     }
