@@ -1,0 +1,1 @@
+<h2>minimum-recolors-to-get-k-consecutive-black-blocks Notes</h2><hr>[ Time taken: 12 m 34 s ]
