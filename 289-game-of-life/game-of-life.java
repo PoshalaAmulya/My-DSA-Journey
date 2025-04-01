@@ -36,7 +36,7 @@ class Solution {
                         board[i][j]=1;
                     }
                 }
-                cnt1=0;cnt0=0;
+                // cnt1=0;cnt0=0;
             }
         }
         return ;
