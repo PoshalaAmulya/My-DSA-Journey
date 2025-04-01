@@ -9,8 +9,8 @@ class Solution {
                 Board[i][j]=board[i][j];
             }
         }
-        int[] posx = {-1, -1, -1, 0, 0, 1, 1, 1};
-        int[] posy = {-1, 0, 1, -1, 1, -1, 0, 1};
+        int posx[]={-1,-1,0,1,1,1,0,-1};
+        int posy[]={0,1,1,1,0,-1,-1,-1};
         int f=0;
         for(i=0;i<m;i++){
             for(j=0;j<n;j++){
@@ -36,7 +36,7 @@ class Solution {
                         board[i][j]=1;
                     }
                 }
-                // cnt1=0;cnt0=0;
+                cnt1=0;cnt0=0;
             }
         }
         return ;
