@@ -13,10 +13,11 @@ class Solution {
                 char c=s.charAt(i);
                 hm.put(c,hm.get(c)-1);
                 i++;
-                maxFreq=0;
-                for(char x: hm.keySet()){
-                    maxFreq=Math.max(maxFreq,hm.get(x));
-                }
+                maxFreq=Math.max(maxFreq,hm.get(c));
+                // maxFreq=0;
+                // for(char x: hm.keySet()){
+                //     maxFreq=Math.max(maxFreq,hm.get(x));
+                // }
             }
             ans=Math.max(ans,j-i+1);
         }
