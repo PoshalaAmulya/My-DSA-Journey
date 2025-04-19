@@ -1,5 +1,6 @@
 class Solution {
     public int fun(int[] c, int idx, int amt,int[][] dp){
+        //Memoization//
         if(amt==0){
             return dp[idx][0]= 0;
         }
@@ -23,12 +24,28 @@ class Solution {
     }
     public int coinChange(int[] coins, int amount) {
         int dp[][]= new int[coins.length][amount+1];
-        for(int i=0;i<coins.length;i++){
-            for(int j=0;j<=amount;j++){
-                dp[i][j]=-1;
+        int i,j;
+        //Tabulation
+        //BaseCASE:
+        for(j=1;j<=amount;j++){
+            if((j%coins[0])==0)
+            dp[0][j]=(j/coins[0]);
+            else{
+                dp[0][j]=Integer.MAX_VALUE;
             }
         }
-        fun(coins,coins.length-1,amount,dp);
+        for(int idx=1;idx<coins.length;idx++){
+            for(int amt=0;amt<=amount;amt++){
+                int notTake= dp[idx-1][amt];
+                int take=Integer.MAX_VALUE;
+                if(coins[idx]<=amt){
+                    int res= dp[idx][amt-coins[idx]];
+                    if(res!=Integer.MAX_VALUE)
+                    take= 1+res;
+                }
+                dp[idx][amt]= Math.min(take,notTake);
+            }
+        }
         if(dp[coins.length-1][amount]==Integer.MAX_VALUE) 
         return -1;
         return dp[coins.length-1][amount];
